@@ -1,0 +1,53 @@
+order <- function() {
+
+    username <- readline("What is your name : ")
+    print(paste("Hello", username , " welcome to Big Pizza "))
+
+    # create menu
+    pizza_menu <- data.frame(
+        id = 1:4,
+        pizza_name = c("Chicken ChicChic", "Black pork", "Super Cheese", "Vegetarian"),
+        pizza_price = c("9 dollar","12 dollar","11 dollar","9.5 dollar")
+    )
+    print(pizza_menu)
+
+
+    while (TRUE) {
+    flush.console()
+    orders <- readline(tolower("You can order food now : "))
+
+
+    if (orders == "Chicken ChicChic") {
+        print("9 $")
+        print("Eat delicious pizza.")
+        Total <- 9
+    }
+
+    else if (orders == "Black pork") {
+        print("12 $")
+        print("Eat delicious pizza.")
+        Total <- 12
+    }
+
+    else if (orders == "Super Cheese") {
+        print("11 $")
+        print("Eat delicious pizza.")
+        Total <- 11
+    }
+
+    else if (orders == "Vegetarian") {
+        print("9.5 $")
+        print("Eat delicious pizza.")
+        Total <- 9.5
+    }
+    else {
+        print("There is no menu of your choice.")
+        return()
+        break
+    }
+
+    print(paste("You have to pay", Total , "$"))
+    print("Thank you for your support")
+    break
+    }
+}
