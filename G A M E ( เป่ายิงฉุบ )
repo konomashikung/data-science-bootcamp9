@@ -1,0 +1,47 @@
+game <- function() {
+
+    username <- readline ("คุณชื่ออะไร : ")
+    print(paste( "สวัสดี ", username, " ยินดีต้อนรับสู่เกมส์ เป่ายิงฉุบ "))
+    print(" พิมพ์คำว่า ฆ้อน กระดาษ กรรไกร เพื่อเล่นเกมส์")
+    print(" พิมพ์ จบ เมื่อต้องการออกจากเกมส์ ")
+    hands <- c("ฆ้อน", "กระดาษ", "กรรไกร")
+    score <- c(Win = 0, Lose = 0, Draw = 0)
+
+    while(TRUE) {
+
+        flush.console()
+        player_hand <- readline ("ยันยิงเยา ปัก เป่ายิ้งฉุบ: ")
+
+        # Check ( wants to quit game )
+
+        if (tolower(player_hand) == "จบ") {
+            print("แล้วมาเล่นกันใหม่นะ ❤️ ")
+            print(score)
+            break
+        }
+
+        comp_hand <- sample(hands,1)
+
+        # เสมอ
+        if (player_hand == comp_hand) {
+            score["Draw"] <- score["Draw"] + 1
+            print(score)
+        }
+
+        # win
+        else if (player_hand == "ฆ้อน" & comp_hand == "กรรไกร" ||
+                 player_hand == "กระดาษ" & comp_hand == "ฆ้อน" ||
+                 player_hand == "กรรไกร" & comp_hand == "กระดาษ") {
+            score["Win"] <- score["Win"] + 1
+            print(score)
+        }
+
+        # lose
+        else if (player_hand == "ฆ้อน" & comp_hand == "กระดาษ" ||
+                 player_hand == "กระดาษ" & comp_hand == "กรรไกร" ||
+                 player_hand == "กรรไกร" & comp_hand == "ฆ้อน") {
+            score["Lose"] <- score["Lose"] + 1
+            print(score)
+        }
+    }
+}
